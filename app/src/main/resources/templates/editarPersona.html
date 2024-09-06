@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Editar Persona</title>
+</head>
+<body>
+    <h1>Editar Persona</h1>
+    <form th:action="@{/personas/editar}" th:object="${persona}" method="post">
+        <!-- Campo oculto para el nombre antiguo -->
+        <input type="hidden" name="nombreAntiguo" th:value="${persona.nombre}" />
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" th:field="*{nombre}" /><br/>
+
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" th:field="*{edad}" /><br/>
+
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" th:field="*{correo}" /><br/>
+
+        <label for="estadoCivil">Estado Civil:</label>
+        <input type="text" id="estadoCivil" th:field="*{estadoCivil}" /><br/>
+
+        <button type="submit">Guardar Cambios</button>
+    </form>
+    <a href="/personas/listar">Volver a la lista</a>
+</body>
+</html>
+
+
+

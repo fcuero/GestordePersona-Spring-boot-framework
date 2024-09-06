@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    <title>Agregar Persona</title>
+</head>
+<Style>
+form{
+    width: 700px;           /* Ancho del cuadro */
+    height: 200px;          /* Alto del cuadro */
+    border: 1px solid #333; /* Borde del cuadro */
+    background-color: #f0f0f0; /* Color de fondo */
+    padding: 10px;          /* Espaciado interno */
+    margin: 20px auto;      /* Margen superior/inferior y centrar el cuadro horizontalmente */
+        /* Alineación del texto */
+    border-radius: 10px;    /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+input{
+    margin-left: 50px;
+}
+</Style>
+<body>
+    <h1>Agregar Persona</h1>
+
+    <form th:action="@{/personas/agregar}" th:object="${persona}" method="post">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" th:field="*{nombre}" /><br/><br/>
+
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" th:field="*{edad}" /><br/><br/>
+
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" th:field="*{correo}" /><br/><br/>
+
+        <label for="estadoCivil">Estado Civil:</label>
+        <input type="text" id="estadoCivil" th:field="*{estadoCivil}" /><br/><br/>
+
+        <button type="submit">Agregar</button>
+    </form>
+
+    <a href="/personas/listar" th:href="@{/personas/listar}">Volver a la lista</a>
+</body>
+</html>
+
+
+
+
+
+

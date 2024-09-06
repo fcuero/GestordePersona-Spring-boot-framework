@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    <title>Lista de Personas</title>
+</head>
+<Style>
+ thead{
+    background-color: #5cfd5f;
+ }
+ td{
+    background-color: #acc3d0;
+ }
+ table{
+    width: 700px;           /* Ancho del cuadro */
+    height: 200px;          /* Alto del cuadro */
+    border: 1px solid #333; /* Borde del cuadro */
+    background-color: #f0f0f0; /* Color de fondo */
+    padding: 10px;          /* Espaciado interno */
+    margin: 20px auto;      /* Margen superior/inferior y centrar el cuadro horizontalmente */
+        /* Alineación del texto */
+    border-radius: 10px;    /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+h3{
+    text-align: center;
+}
+ 
+</Style>
+<h1>Lista de Personas</h1> 
+<h3><a href="/personas/agregar" th:href="@{/personas/agregar}">Agregar Persona</a>
+</h3>
+<body>
+    
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Correo</th>
+                <th>Estado Civil</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="persona : ${personas}">
+                <td th:text="${persona.nombre}"></td>
+                <td th:text="${persona.edad}"></td>
+                <td th:text="${persona.correo}"></td>
+                <td th:text="${persona.estadoCivil}"></td>
+                <td>
+                    <a href="#" th:href="@{/personas/editar/{nombre}(nombre=${persona.nombre})}">Editar</a>
+                    
+
+
+                </td>
+                <td><a th:href="@{/personas/eliminar/{nombre}(nombre=${persona.nombre})}"
+                    onclick="return confirm('¿Estás seguro de que deseas eliminar a esta persona?');">
+                    Eliminar
+                </a></td>
+            </tr>
+        </tbody>
+    </table>
+    
+</body>
+</html>
+
+
+
